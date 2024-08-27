@@ -1,4 +1,4 @@
-import { createVuetify, ThemeDefinition, useDisplay } from 'vuetify'
+import { createVuetify, ThemeDefinition } from 'vuetify'
 import 'vuetify/styles'
 import { VApp } from 'vuetify/components/VApp'
 import { VAlert } from 'vuetify/components/VAlert'
@@ -12,13 +12,15 @@ import { VDivider } from 'vuetify/components/VDivider'
 import { VList, VListItem, VListGroup, VListItemTitle, VListItemSubtitle } from 'vuetify/components/VList'
 import { VRating } from 'vuetify/components/VRating'
 import { VForm } from 'vuetify/components/VForm'
-import { VToolbar,VToolbarItems,VToolbarTitle } from 'vuetify/components/VToolbar'
+import { VBreadcrumbs } from 'vuetify/components/VBreadcrumbs'
+import { VToolbar, VToolbarItems, VToolbarTitle } from 'vuetify/components/VToolbar'
 import { VExpansionPanels, VExpansionPanel, VExpansionPanelText, VExpansionPanelTitle } from 'vuetify/components/VExpansionPanel'
 import { VBtn } from 'vuetify/components/VBtn'
 import { VAutocomplete } from 'vuetify/components/VAutocomplete'
 import { VMain } from 'vuetify/components/VMain'
 import { VTabs } from 'vuetify/components/VTabs'
 import { VLazy } from 'vuetify/components/VLazy'
+import { VMenu } from 'vuetify/components/VMenu'
 import { VDialog } from 'vuetify/components/VDialog'
 import { VLayout } from 'vuetify/components/VLayout'
 import { VSnackbar } from 'vuetify/components/VSnackbar'
@@ -27,7 +29,7 @@ import { VCol, VRow, VContainer, VSpacer } from 'vuetify/components/VGrid'
 import { VTextField } from 'vuetify/components/VTextField'
 import { VNoSsr } from 'vuetify/components/VNoSsr'
 import { Ripple, Scroll, ClickOutside } from 'vuetify/directives'
-import { VDataTable,VDataTableVirtual } from 'vuetify/components/VDataTable'
+import { VDataTable, VDataTableVirtual } from 'vuetify/components/VDataTable'
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 // Translations provided by Vuetify
 import { fa, en } from 'vuetify/locale'
@@ -154,7 +156,9 @@ const DarkTheme: ThemeDefinition = {
   }
 }
 export default defineNuxtPlugin((nuxtApp) => {
-  const themetype = useCookie('themetype') || 'DarkTheme'
+  let themetype = useCookie('themetype')
+  let thelocale = useCookie('i18n_redirected')
+  themetype.value = themetype.value || "DarkTheme"
 
   const vuetify = createVuetify({
     defaults: {
@@ -178,20 +182,21 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
     ssr: true,
     locale: {
-      locale: 'en',
+      locale: thelocale,
       fallback: 'en',
       messages: { fa, en },
       rtl: {
-        fa: false
+        fa: true
       }
     },
     components: {
       VAlert,
       VOverlay,
       VNavigationDrawer,
-      VDataTable,VDataTableVirtual,
+      VDataTable, VDataTableVirtual,
       VAppBar,
       VAppBarTitle,
+      VBreadcrumbs,
       VAppBarNavIcon,
       VDivider,
       VImg,
@@ -202,7 +207,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       VList, VListGroup, VListItem, VListItemSubtitle, VListItemTitle,
       VRating,
       VApp,
-      VToolbar,VToolbarItems,VToolbarTitle,
+      VToolbar, VToolbarItems, VToolbarTitle,
       VTextField,
       VRow,
       VContainer,
@@ -217,7 +222,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       VAutocomplete,
       VFooter,
       VBtn,
-      VExpansionPanels,VExpansionPanel,VExpansionPanelText,VExpansionPanelTitle
+      VMenu,
+      VExpansionPanels, VExpansionPanel, VExpansionPanelText, VExpansionPanelTitle
     },
     directives: {
       Ripple,
@@ -240,7 +246,7 @@ export default defineNuxtPlugin((nuxtApp) => {
        },*/
       themes: {
         LightTheme,
-         DarkTheme
+        DarkTheme
       },
 
     },

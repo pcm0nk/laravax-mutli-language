@@ -1,5 +1,9 @@
 <script>
 export default {
+  setup() {
+    const { locale, setLocale } = useI18n();
+    return { locale, setLocale };
+  },
   data() {
     return {
       firstnav: true,
@@ -7,7 +11,7 @@ export default {
       menuarray: [
         {
           id: 0,
-          text: "Organization Chart",
+          text: this.$t("navigation.organizationchart"),
           icon: "mdi-family-tree",
           iconappend: "mdi-chevron-right",
           active: false,
@@ -108,28 +112,31 @@ export default {
       :expand-on-hover="hoverit"
       color="navcolor"
     >
-      <v-list-item
-        nav
-        :class="{ 'ml-2': hoverit }"
-        prepend-avatar="https://randomuser.me/api/portraits/women/34.jpg"
-      ></v-list-item>
+      <v-list slim nav class="py-0">
+        <v-list-item
+          nav
+          slim
+          prepend-avatar="https://randomuser.me/api/portraits/women/34.jpg"
+        ></v-list-item>
+      </v-list>
       <v-divider></v-divider>
 
-      <v-list density="compact" nav class="px-0">
+      <v-list density="compact" nav justify="center">
         <template v-for="(item, index) in menuarray" :key="index">
           <v-list-item
+            nav
             class="body-1"
             :active="item.active"
             @click="runsecondnav(index, item.id)"
           >
             <template v-slot:prepend>
-              <v-icon class="ml-2">{{ item.icon }}</v-icon>
+              <v-icon>{{ item.icon }}</v-icon>
             </template>
             <template v-slot:title>
               <span class="text-body-1">{{ item.text }}</span>
             </template>
             <template v-slot:append v-if="item.iconappend != ''">
-              <v-icon class="ml-2">{{ item.iconappend }}</v-icon>
+              <v-icon>{{ item.iconappend }}</v-icon>
             </template>
           </v-list-item>
         </template>

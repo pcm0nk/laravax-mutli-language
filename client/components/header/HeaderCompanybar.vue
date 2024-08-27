@@ -1,32 +1,31 @@
+<script>
+export default {
+  components: {
+    themecolor: defineAsyncComponent(() => import("../theme/themecolor.vue")),
+    breadcrumb: defineAsyncComponent(() =>
+      import("../breadcrumb/breadcrumb.vue")
+    ),
+    changelanguage: defineAsyncComponent(() =>
+      import("../multilanguage/changelanguage.vue")
+    ),
+  },
+};
+</script>
 <template>
   <div>
-      <v-app-bar
-      dense
-      >
-        <template v-slot:image>
-
-        </template>
-
-        <template v-slot:prepend>
-          <v-app-bar-nav-icon></v-app-bar-nav-icon>
-        </template>
-
-        <v-app-bar-title>Title</v-app-bar-title>
-
-        <v-spacer></v-spacer>
-
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-      </v-app-bar>
-
-      </div>
+    <v-toolbar dense class="elevation-0 px-3">
+      <v-toolbar-title class="px-8">
+        <breadcrumb />
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-row justify="end" align="center">
+        <v-col cols="3" class="text-center">
+          <changelanguage />
+        </v-col>
+        <v-col cols="1">
+          <themecolor />
+        </v-col>
+      </v-row>
+    </v-toolbar>
+  </div>
 </template>

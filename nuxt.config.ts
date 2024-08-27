@@ -43,7 +43,12 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n'
   ],
   i18n: {
-    vueI18n: 'client/i18n/i18n.config.ts' // if you are using custom path, defaul
+    lazy: true,
+    langDir: 'lang',
+    strategy: 'prefix_and_default',
+    defaultLocale: 'en', // default locale of your project for Nuxt pages and routings
+    locales: [{ code: 'en', iso: 'en-US', file: 'en.ts' }, { code: 'fa', iso: 'fa', file: 'fa.ts' }],
+
   },
   pinia: {
     autoImports: [
