@@ -1,5 +1,4 @@
 <script setup>
-import { useCookie } from "nuxt/app";
 import { useI18n } from "vue-i18n";
 import { useLocale } from "vuetify";
 const { locale, setLocale } = useI18n();

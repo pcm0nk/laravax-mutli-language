@@ -42,14 +42,15 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/i18n'
   ],
+
   i18n: {
     lazy: true,
     langDir: 'lang',
-    strategy: 'prefix_and_default',
+    strategy: 'prefix',
     defaultLocale: 'en', // default locale of your project for Nuxt pages and routings
-    locales: [{ code: 'en', iso: 'en-US', file: 'en.ts' }, { code: 'fa', iso: 'fa', file: 'fa.ts' }],
-
+    locales: [{ code: 'en', language: 'en-US', file: 'en.ts' }, { code: 'fa', language: 'fa', file: 'fa.ts' }],
   },
+
   pinia: {
     autoImports: [
       'defineStore', // import { defineStore } from 'pinia'
@@ -92,5 +93,9 @@ export default defineNuxtConfig({
     "@pinia/nuxt"
   ],
 
-  compatibilityDate: '2024-08-04'
+  compatibilityDate: '2024-08-04',
+
+  devtools: {
+    enabled: true
+  }
 })

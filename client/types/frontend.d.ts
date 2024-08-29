@@ -1,10 +1,3 @@
-
-export interface BreadCrumb {
-  name: string
-  to?: RouteLocationRaw
-  icon?: string
-}
-
 export interface UserLogin {
   token: string
   user: models.User

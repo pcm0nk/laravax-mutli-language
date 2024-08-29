@@ -13,7 +13,16 @@ export const useMainStore = defineStore('mainstore', () => {
       v => /.+@.+\..+/.test(v) || 'Enter a valid email',
     ])
 
-
-    return { numberregex,emailregex }
+  let breadcrumb = {
+    /* the first navigation menu when its selected the values sit here
+      on click we open the first menu
+    */
+    mainmenu: { value: '', id: '' }, 
+    /* secondary navigation menu which values sit here 
+      on lcick we open the secondary menu
+    */
+    secondmenu: { value: '', id: '' }
+  }
+    return { breadcrumb,numberregex,emailregex }
   })
 

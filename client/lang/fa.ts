@@ -1,5 +1,6 @@
 export default defineI18nLocale(async locale => {
     return {
+        home: 'خانه',
         welcome: 'خوش آمدید',
         loading: 'در حال بارگذاری',
         currentlanguage: 'فارسی',
@@ -11,10 +12,11 @@ export default defineI18nLocale(async locale => {
             charts: "نمودارها",
             basicinfo: "اطلاعات پایه",
             levels: "سطوح",
-            topchart: "نمودار برتر",
+            topcharts: "نمودار برتر",
             reports: "گزارش‌ها"
         },
         auth: {
+
             username: "نام کاربری",
             password: 'رمز عبور',
             emailormobile: "ایمیل یا موبایل",
@@ -23,7 +25,10 @@ export default defineI18nLocale(async locale => {
             login: 'ورود',
             register: 'ثبت نام',
             forgotpassword: 'فراموشی رمز عبور!'
+        },
+        pages: {
+            dashboard: 'داشبورد',
+            company: 'شرکت'
         }
-
     }
 })

@@ -1,5 +1,10 @@
 export default defineI18nLocale(async locale => {
     return {
+        welcome: 'Welcome',
+        loading: 'Loading...',
+        currentlanguage: 'English',
+        currentdirection: 'Direction',
+        home: 'Home',
         navigation: {
             organizationchart: 'Organization Chart',
             logout: 'Logout',
@@ -7,13 +12,9 @@ export default defineI18nLocale(async locale => {
             charts: 'Charts',
             basicinfo: 'Basic Info',
             levels: 'Levels',
-            topchart: 'Top Chart',
+            topcharts: 'Top Chart',
             reports: 'Reports',
         },
-        welcome: 'Welcome',
-        loading: 'Loading...',
-        currentlanguage: 'English',
-        currentdirection: 'Direction',
         auth: {
             username: "User Name",
             password: 'Password',
@@ -24,5 +25,9 @@ export default defineI18nLocale(async locale => {
             register: 'Register',
             forgotpassword: 'Forget your passsword?',
         },
+        pages: {
+            dashboard: 'Dashboard',
+            company: 'Company'
+        }
     }
 })

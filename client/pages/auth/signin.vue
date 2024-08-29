@@ -2,15 +2,13 @@
 import { useSnackbar } from "~/composables/useSnackbar";
 import { useMainStore } from "@/store/mainstore";
 export default {
+  name: "signin",
   setup() {
-    const { locale, setLocale } = useI18n();
     const store = useMainStore();
     const createSnackbar = useSnackbar();
     return {
       createSnackbar,
       store,
-      locale,
-      setLocale,
     };
   },
   data() {
@@ -21,9 +19,6 @@ export default {
       loading: false,
       validit: false,
     };
-  },
-  mounted() {
-    // this.$i18n.setLocale("fa"); just to test it out
   },
   methods: {
     async login() {
@@ -125,7 +120,7 @@ export default {
                   >
                     <template v-slot="loader">
                       <span v-if="loading"> {{ $t("loading") }} </span>
-                      <span v-else> {{ $t("login") }} </span>
+                      <span v-else> {{ $t("auth.login") }} </span>
                     </template>
                   </v-btn>
                 </v-col>

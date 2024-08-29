@@ -1,8 +1,12 @@
 <script>
+import { useMainStore } from "@/store/mainstore";
+
 export default {
   setup() {
+    const localePath = useLocalePath();
     const { locale, setLocale } = useI18n();
-    return { locale, setLocale };
+    const store = useMainStore();
+    return { locale, setLocale, localePath, store };
   },
   data() {
     return {
@@ -19,7 +23,7 @@ export default {
         },
         {
           id: 99,
-          text: "Logout",
+          text: this.$t("navigation.logout"),
           icon: "mdi-logout",
           iconappend: "",
           active: false,
@@ -30,33 +34,33 @@ export default {
         {
           id: 0,
           menuid: 0,
-          text: "Actions",
+          text: this.$t("navigation.actions"),
           value: "actions",
           menuoption: [
             {
               opid: 0,
               icon: "mdi-circle-small",
-              text: "Charts",
-              to: "/charts",
+              text: this.$t("navigation.charts"),
+              to: "company-charts",
             },
           ],
         },
         {
           id: 1,
           menuid: 0,
-          text: "Basic Info",
+          text: this.$t("navigation.basicinfo"),
           value: "basicinfo",
           menuoption: [
             {
-              text: "Levels",
+              text: this.$t("navigation.levels"),
               opid: 0,
-              to: "/basicinfo",
+              to: "company-basicinfo",
               icon: "mdi-circle-small",
             },
             {
-              text: "Top Chart",
+              text: this.$t("navigation.topcharts"),
               opid: 1,
-              to: "/topchart",
+              to: "company-topchart",
               icon: "mdi-circle-small",
             },
           ],
@@ -65,12 +69,12 @@ export default {
           id: 2,
           menuid: 0,
           value: "reports",
-          text: "Reports",
+          text: this.$t("navigation.reports"),
           menuoption: [],
         },
       ],
       secondnav: false,
-      open: ["actions", "basicinfo", "reports"],
+      open: ["actions", "basicinfo", "reports"], // each menu has this section
       admins: [
         ["Management", "mdi-account-multiple-outline"],
         ["Settings", "mdi-cog-outline"],
@@ -86,49 +90,37 @@ export default {
 
   methods: {
     onClickOutside() {
-      this.secondnav = false;
+      this.secondnav = false
     },
     onCloseConditional() {
-      return true;
+      return true
     },
     runsecondnav(index, id) {
       if (id == 99) {
-        useApi().logout();
-        return false;
+        useApi().logout()
+        return false
       }
-      this.hoverit = false;
-      this.secondnav = true;
-      this.menuarray[index]["active"] = true;
+      this.store.breadcrumb["mainmenu"]["value"] = this.menuarray[index]["text"]
+      this.store.breadcrumb["mainmenu"]["id"] = this.menuarray[index]["text"]
+      this.hoverit = false
+      this.secondnav = true
+      this.menuarray[index]["active"] = true
     },
   },
 };
 </script>
 <template>
   <div>
-    <v-navigation-drawer
-      rail
-      @mouseleave="hoverit = true"
-      :model-value="firstnav"
-      :expand-on-hover="hoverit"
-      color="navcolor"
-    >
+    <v-navigation-drawer rail @mouseleave="hoverit = true" :model-value="firstnav" :expand-on-hover="hoverit"
+      color="navcolor">
       <v-list slim nav class="py-0">
-        <v-list-item
-          nav
-          slim
-          prepend-avatar="https://randomuser.me/api/portraits/women/34.jpg"
-        ></v-list-item>
+        <v-list-item nav slim prepend-avatar="https://randomuser.me/api/portraits/women/34.jpg"></v-list-item>
       </v-list>
       <v-divider></v-divider>
 
       <v-list density="compact" nav justify="center">
         <template v-for="(item, index) in menuarray" :key="index">
-          <v-list-item
-            nav
-            class="body-1"
-            :active="item.active"
-            @click="runsecondnav(index, item.id)"
-          >
+          <v-list-item nav class="body-1" :active="item.active" @click="runsecondnav(index, item.id)">
             <template v-slot:prepend>
               <v-icon>{{ item.icon }}</v-icon>
             </template>
@@ -144,41 +136,19 @@ export default {
     </v-navigation-drawer>
 
     <v-no-ssr>
-      <v-navigation-drawer
-        :temporary="true"
-        color="secondnavcolor"
-        @mouseleave="secondnav = false"
-        :model-value="secondnav"
-      >
-        <v-list
-          v-click-outside="{
-            handler: onClickOutside,
-            closeConditional: onCloseConditional,
-          }"
-          v-if="secondnav"
-          v-model:opened="open"
-          open-strategy="multiple"
-        >
-          <v-list-group
-            v-for="(sitem, index) in submenuarray"
-            :value="sitem.value"
-            :key="sitem.value"
-          >
+      <v-navigation-drawer :temporary="true" color="secondnavcolor" @mouseleave="secondnav = false"
+        :model-value="secondnav">
+        <v-list v-click-outside="{
+          handler: onClickOutside,
+          closeConditional: onCloseConditional,
+        }" v-if="secondnav" v-model:opened="open" open-strategy="multiple">
+          <v-list-group v-for="(sitem, index) in submenuarray" :value="sitem.value" :key="sitem.value">
             <template v-slot:activator="{ props }">
-              <v-list-item
-                v-bind="props"
-                class="text-body-2 text--on-surface"
-                :title="sitem.text"
-                color="on-surface"
-              >
+              <v-list-item v-bind="props" class="text-body-2 text--on-surface" :title="sitem.text" color="on-surface">
               </v-list-item>
             </template>
-            <v-list-item
-              v-for="(mitem, index) in sitem.menuoption"
-              :key="mitem.opid"
-              @click="secondnav = false"
-              :to="mitem.to"
-            >
+            <v-list-item v-for="(mitem, index) in sitem.menuoption" :key="mitem.opid" @click="secondnav = false"
+              :to="localePath(mitem.to)">
               <v-list-item-title class="text-subtitle-2">
                 <v-icon :icon="mitem.icon"></v-icon>
                 {{ mitem.text }}
