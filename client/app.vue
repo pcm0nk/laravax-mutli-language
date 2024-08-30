@@ -45,7 +45,7 @@ export default {
     }
   },
 
-  mounted() {},
+  mounted() { },
 
   watch: {
     $route(to, from) {

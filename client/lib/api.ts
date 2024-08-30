@@ -4,7 +4,7 @@ import { reactive, ref } from 'vue'
 import type { Router } from 'vue-router'
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
-
+const localePath = useLocalePath()
 export interface UserLogin {
   token: string
   user: models.User
@@ -38,12 +38,12 @@ export interface LoginAction {
 
 const authConfigDefaults: AuthConfig = {
   fetchOptions: {},
-  webURL: 'http://localhost:3000',
+  webURL: localePath('http://localhost:3000'),
   apiURL: 'http://localhost/',
   redirect: {
-    companydashboard: '/company/dashboard',
-    logout: 'auth/signin.vue',
-    login: 'auth/signin.vue',
+    companydashboard: localePath('company-dashboard'),
+    logout: localePath('auth/signin.vue'),
+    login: localePath('auth/signin.vue'),
   },
 }
 
@@ -148,7 +148,7 @@ export default class Api {
 
   public async setUser(userinfo: { email: string, password: string }): Promise<object> {
     let result: any = []
-    let snackbar: any = { message: '', color: 'error' }
+    const snackbar: any = { message: '', color: 'error' }
     try {
 
       result = await this.store('/login', {

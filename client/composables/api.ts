@@ -1,5 +1,7 @@
 import Api from '@/lib/api'
+
 let api: Api
+const localePath = useLocalePath();
 
 export const useApi = () => {
   if (!api) {
@@ -9,11 +11,11 @@ export const useApi = () => {
         baseURL: config.public.baseURL,
       },
       apiURL: config.public.apiURL,
-      webURL: config.public.webURL,
+      webURL: localePath(config.public.webURL),
       redirect: {
-        companydashboard: '/company/dashboard',
-        logout: '/auth/signin',
-        login: '/auth/signin',
+        companydashboard: localePath('company-dashboard'),
+        logout: localePath('/auth/signin'),
+        login: localePath('/auth/signin'),
       },
       /*
       echoConfig: {

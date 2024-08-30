@@ -89,6 +89,13 @@ export default {
   },
 
   methods: {
+    secondnavaction(item, theid) {
+      debugger
+      this.store.breadcrumb['secondmenu']['value'] = item.text
+      this.store.breadcrumb['secondmenu']['id'] = theid
+      this.secondnav = false
+      navigateTo(this.localePath(item.to))
+    },
     onClickOutside() {
       this.secondnav = false
     },
@@ -101,7 +108,7 @@ export default {
         return false
       }
       this.store.breadcrumb["mainmenu"]["value"] = this.menuarray[index]["text"]
-      this.store.breadcrumb["mainmenu"]["id"] = this.menuarray[index]["text"]
+      this.store.breadcrumb["mainmenu"]["id"] = this.menuarray[index]["id"]
       this.hoverit = false
       this.secondnav = true
       this.menuarray[index]["active"] = true
@@ -147,8 +154,8 @@ export default {
               <v-list-item v-bind="props" class="text-body-2 text--on-surface" :title="sitem.text" color="on-surface">
               </v-list-item>
             </template>
-            <v-list-item v-for="(mitem, index) in sitem.menuoption" :key="mitem.opid" @click="secondnav = false"
-              :to="localePath(mitem.to)">
+            <v-list-item v-for="(mitem, indexm) in sitem.menuoption" :key="mitem.opid"
+              @click="secondnavaction(mitem, indexm)">
               <v-list-item-title class="text-subtitle-2">
                 <v-icon :icon="mitem.icon"></v-icon>
                 {{ mitem.text }}
@@ -160,3 +167,8 @@ export default {
     </v-no-ssr>
   </div>
 </template>
+<style>
+.v-locale--is-rtl .v-list-item__append i {
+  transform: rotate(180deg);
+}
+</style>
