@@ -8,8 +8,7 @@
 
 > Example of Authentication,Light & Dark Mode In Vuetify,Double Navigation Drawer, Multiple Layouts with different style and using pinia in nuxt 3 enviorment.
 
-This project was forked from **[pcm0nk/laravax](https://github.com/pcm0nk/laravax)** then I added Vuetify using tree shaking with custom dark and light mode, Authentication with Passport and Pinia and some more which you can chech it at [Whats Included](#Whats-Included)
-
+This project was forked from **[pcm0nk/laravax](https://github.com/pcm0nk/laravax)** 
 ## Whats Included
 
 ### Backend
