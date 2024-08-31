@@ -43,7 +43,7 @@ This project was forked from **[pcm0nk/laravax](https://github.com/pcm0nk/larava
 **Command Line**
 
 ```
-git clone git@github.com:pcm0nk/laravax.git
+git clone [git@github.com:pcm0nk/laravax-mutli-language.git](https://github.com/pcm0nk/laravax-mutli-language.git)
 cd laravax
 composer install
 npm install
