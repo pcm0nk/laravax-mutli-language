@@ -2,30 +2,13 @@
   <img src="https://github.com/pcm0nk/Laravax/blob/main/resources/laravax.png" width="80%" />
 </p>
 
-## Laravel 11 + Nuxt.js 3 + Vuetify + Pinia Boilerplate - Laravax
+## Multi Language - Laravel 11 + Nuxt.js 3 + Vuetify + Pinia Boilerplate - Laravax
 
 ![](resources/laravax.gif?raw=true)
 
 > Example of Authentication,Light & Dark Mode In Vuetify,Double Navigation Drawer, Multiple Layouts with different style and using pinia in nuxt 3 enviorment.
 
-This project was forked from **[fumeapp/laranuxt](https://github.com/fumeapp/laranuxt)** then I added Vuetify using tree shaking with custom dark and light mode, Authentication with Passport and Pinia and some more which you can chech it at [Whats Included](#Whats-Included)
-
-## :warning: I removed some of the packages that came from the forked project
-
-- **Back-end**
-
-  - fumeapp/modeltyper: ^1.0
-  - acidjazz/humble: ^3.0
-  - acidjazz/metapi: ^2.1
-  - barryvdh/laravel-debugbar: ^3.5
-
-- **Front-end**
-  - @tailvue/nuxt: ^0.1.62
-  - dayjs: ^1.10.7
-  - husky: ^8.0.1
-  - @iconify/vue: ^4.0.0
-  - nuxt-windicss: ^2.5.5
-  - lottie-web: ^5.8.1
+This project was forked from **[pcm0nk/laravax](https://github.com/pcm0nk/laravax)** then I added Vuetify using tree shaking with custom dark and light mode, Authentication with Passport and Pinia and some more which you can chech it at [Whats Included](#Whats-Included)
 
 ## Whats Included
 
@@ -71,19 +54,11 @@ php artisan passport:keys
 php artisan passport:client --password
 ```
 
-### :stop_sign: Security Concern
-
-- Must run `php artisan key:generate` to have a unique **Laravel App Key**
-- Must run `php artisan passport:keys --force` to regenerate passport keys to make sure you have unique keys
-- Must run `php artisan passport:client --password` to regenerate client ID and client Secret
-
-_If you dont do this,Your **Application Key** which is used for CSRF token and your **Passport Secret Keys** are exposed to every developer who used this repo and might not be able to use passport due to different client ID and Secret (If that make sense)_
-
 You can remove media in `/resources/`
 
 ### Local Environment
 
-- run `npm dev` in one terminal for Nuxt
+- run `npm run dev` in one terminal for Nuxt
 - run `php artisan serve` in another terminal for Laravel
 
 ### Api and Authentication
