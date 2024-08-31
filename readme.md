@@ -19,7 +19,8 @@ This project was forked from **[pcm0nk/laravax](https://github.com/pcm0nk/larava
 ### Frontend
 
 - [NUXT v3](https://nuxt.com) (Front-end, A Progressive Vuejs framework
-
+  - [Nuxt i18n](https://i18n.nuxtjs.org/docs/getting-started) Multi-Language (English / Persian )
+    
   - [Vuetify](https://vuetifyjs.com/) (UI Library with beautifully handcrafted Vue Components)
 
     - Implemented custom Dark and Light mode
@@ -143,3 +144,6 @@ const result = api.delete<api.MetApiResponse>("/user/1");
 ### Pinia
 
 - Example on how to use pinia in `auth/signing.vue`
+
+### i18n
+The configuration is in `nuxt.config.ts`. Since we are using lazy load for localization there is a `lang` folder contains the text of each language (TODO : break each page into its own file and import them)
