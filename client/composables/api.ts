@@ -1,7 +1,7 @@
-import Api from '@/lib/api'
+import Api from '@/utils/api'
 
 let api: Api
-const localePath = useLocalePath();
+
 
 export const useApi = () => {
   if (!api) {
@@ -11,11 +11,11 @@ export const useApi = () => {
         baseURL: config.public.baseURL,
       },
       apiURL: config.public.apiURL,
-      webURL: localePath(config.public.webURL),
+      webURL: config.public.webURL,
       redirect: {
-        companydashboard: localePath('company-dashboard'),
-        logout: localePath('/auth/signin'),
-        login: localePath('/auth/signin'),
+        companydashboard: '/company/dashboard',
+        logout: '/auth/signin',
+        login: '/auth/signin',
       },
       /*
       echoConfig: {

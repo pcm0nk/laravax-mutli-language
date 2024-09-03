@@ -62,9 +62,9 @@ export default defineNuxtConfig({
    */
   runtimeConfig: {
     public: {
-      baseURL: process.env.APP_URL || 'http://localhost',
-      webURL: process.env.WEB_URL || 'http://localhost:3000',
-      apiURL: process.env.API_URL || 'http://localhost',
+      baseURL: process.env.APP_URL || 'http://hrformula.ir',
+      webURL: process.env.WEB_URL || 'http://hrformula.ir',
+      apiURL: process.env.API_URL || 'http://hrformula.ir/api',
     },
   },
 
@@ -75,6 +75,7 @@ export default defineNuxtConfig({
   },
 
   build: {
+
     extend(config, { isDev, isClient }) {
       // ..
       config.module.rules.push({

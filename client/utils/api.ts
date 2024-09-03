@@ -4,7 +4,7 @@ import { reactive, ref } from 'vue'
 import type { Router } from 'vue-router'
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
-const localePath = useLocalePath()
+
 export interface UserLogin {
   token: string
   user: models.User
@@ -38,12 +38,12 @@ export interface LoginAction {
 
 const authConfigDefaults: AuthConfig = {
   fetchOptions: {},
-  webURL: localePath('http://localhost:3000'),
-  apiURL: 'http://localhost/',
+  webURL: process.env.WEB_URL || "https://www.hrformula.ir",
+  apiURL: process.env.API_URL || "https://www.hrformula.ir/api",
   redirect: {
-    companydashboard: localePath('company-dashboard'),
-    logout: localePath('auth/signin.vue'),
-    login: localePath('auth/signin.vue'),
+    companydashboard: '/company/dashboard',
+    logout: '/auth/signin',
+    login: '/auth/signin',
   },
 }
 
