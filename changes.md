@@ -4,6 +4,10 @@
 
 ## Changes
 
+### Version 1.0.22
+- Added localepath.global.ts to convert the route to global before navigation
+
+
 ### Version 1.0.12
 
 - Added .env file

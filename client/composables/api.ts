@@ -1,4 +1,4 @@
-import Api from '@/utils/api'
+import Api from '@/lib/api'
 
 let api: Api
 
