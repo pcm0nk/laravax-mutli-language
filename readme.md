@@ -6,26 +6,9 @@
 
 ![](resources/laravax.gif?raw=true)
 
-> Example of Authentication,Light & Dark Mode In Vuetify,Double Navigation Drawer, Multiple Layouts with different style and using pinia in nuxt 3 enviorment.
+> Example of Multi-Language, Authentication,Light & Dark Mode In Vuetify,Double Navigation Drawer, Multiple Layouts with different style and using pinia in nuxt 3 enviorment.
 
-This project was forked from **[fumeapp/laranuxt](https://github.com/fumeapp/laranuxt)** then I added Vuetify using tree shaking with custom dark and light mode, Authentication with Passport and Pinia and some more which you can chech it at [Whats Included](#Whats-Included)
-
-## :warning: I removed some of the packages that came from the forked project
-
-- **Back-end**
-
-  - fumeapp/modeltyper: ^1.0
-  - acidjazz/humble: ^3.0
-  - acidjazz/metapi: ^2.1
-  - barryvdh/laravel-debugbar: ^3.5
-
-- **Front-end**
-  - @tailvue/nuxt: ^0.1.62
-  - dayjs: ^1.10.7
-  - husky: ^8.0.1
-  - @iconify/vue: ^4.0.0
-  - nuxt-windicss: ^2.5.5
-  - lottie-web: ^5.8.1
+This project was forked from **[pcm0nk/laranuxt](https://github.com/pcm0nk/laravax)** then I added [@nuxtjs/i18n](https://i18n.nuxtjs.org/docs/getting-started) you can chech [Whats Included](#Whats-Included) for everything that is included.
 
 ## Whats Included
 
