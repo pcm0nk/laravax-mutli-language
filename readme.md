@@ -44,7 +44,7 @@ This project was forked from **[pcm0nk/laranuxt](https://github.com/pcm0nk/larav
 
 ```
 git clone git@github.com:pcm0nk/laravax-mutli-language.git
-cd laravax
+cd laravax-mutli-language
 composer install
 npm install
 //after configuring .env run the command below
